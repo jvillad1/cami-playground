@@ -1,4 +1,4 @@
-package com.cami.playground
+package com.cami.playground.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.cami.playground.R
 import com.cami.playground.databinding.ActivityMainBinding
 import timber.log.Timber
 import kotlin.time.TimeSource.Monotonic.markNow
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
                 val bundle = Bundle().apply {
                     putString("time", mark.toString())
                 }
+
+                it.putExtras(bundle)
                 startActivity(it)
             }
         }
