@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Cami Playground"
+rootProject.name = "cami-playground"
 include(":app")
  

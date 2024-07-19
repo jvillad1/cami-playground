@@ -1,6 +1,7 @@
 package com.cami.playground.presentation
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonFirst.setOnClickListener {
             val mark = markNow()
-            Timber.d("Launching FirstActivity at $mark")
+            Timber.d("Launching FirstActivity at ${mark.elapsedNow()}")
 
             Intent(this, FirstActivity::class.java).also {
                 val bundle = Bundle().apply {
@@ -40,6 +41,16 @@ class MainActivity : AppCompatActivity() {
                 it.putExtras(bundle)
                 startActivity(it)
             }
+        }
+
+        binding.buttonDeeplink.setOnClickListener {
+            val explicitIntent = Uri.parse(
+                "https://www.mercadopago.com.br/payments/82625702755/ticket?caller_id=86100721&payment_me[%E2%80%A6]_id=10377982843&hash=bf225f33-c8b7-46e5-ab2b-6e105a19f965"
+            ).let { link ->
+                Intent(Intent.ACTION_VIEW, link)
+            }
+
+            startActivity(explicitIntent)
         }
     }
 }
