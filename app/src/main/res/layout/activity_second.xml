@@ -8,7 +8,7 @@
     tools:context=".presentation.SecondActivity">
 
     <TextView
-        android:text="Second Scren is here"
+        android:text="Second Screen is here"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
