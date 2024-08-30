@@ -11,6 +11,7 @@ import com.cami.playground.databinding.ActivitySecondBinding
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
