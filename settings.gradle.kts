@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "cami-playground"
 include(":app")
- 
+include(":composeapp")
