@@ -18,7 +18,7 @@ fun ProductScreen(modifier: Modifier = Modifier, productId: String) {
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
-            text = productId
+            text = "Product ID: $productId"
         )
     }
 }

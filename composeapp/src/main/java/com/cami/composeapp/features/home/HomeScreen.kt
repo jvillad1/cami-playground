@@ -28,15 +28,19 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
-        Button(onClick = {
-            viewModel.onChangeCounter(state.counter + 1)
-        }) {
+        Button(
+            onClick = {
+                viewModel.onChangeCounter(state.counter + 1)
+            }
+        ) {
             Text("Counter : ${state.counter}")
         }
-        Button(onClick = {
-            onProductClick("ABC")
-        }) {
+
+        Button(
+            onClick = {
+                onProductClick(state.counter.toString())
+            }
+        ) {
             Text("Go to product screen")
         }
     }
@@ -47,7 +51,7 @@ fun HomeScreen(
 fun HomePreview() {
     CamiplaygroundTheme {
         HomeScreen { id ->
-            Timber.tag("HomePreview").d("Go to product screen with Id: $id")
+            Timber.tag("HomePreview").d("Go to product screen with ID: $id")
         }
     }
 }
