@@ -1,4 +1,4 @@
-package com.cami.composeapp
+package com.cami.composeapp.core.navigation
 
 import kotlinx.serialization.Serializable
 

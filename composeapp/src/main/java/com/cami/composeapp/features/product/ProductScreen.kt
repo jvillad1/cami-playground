@@ -1,5 +1,6 @@
-package com.cami.composeapp
+package com.cami.composeapp.features.product
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -13,7 +14,8 @@ import com.cami.composeapp.ui.theme.CamiplaygroundTheme
 fun ProductScreen(modifier: Modifier = Modifier, productId: String) {
     Column(
         modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
         Text(
             text = productId

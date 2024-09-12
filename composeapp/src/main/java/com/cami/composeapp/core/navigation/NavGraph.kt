@@ -1,4 +1,4 @@
-package com.cami.composeapp
+package com.cami.composeapp.core.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,6 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.cami.composeapp.features.home.HomeScreen
+import com.cami.composeapp.features.product.ProductScreen
 
 @Composable
 fun NavGraph() {
@@ -28,6 +30,7 @@ fun NavGraph() {
                     }
                 )
             }
+
             composable<ProductRoute> { backStackEntry ->
                 val product: ProductRoute = backStackEntry.toRoute()
 
