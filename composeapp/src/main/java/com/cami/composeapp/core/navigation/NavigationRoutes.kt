@@ -8,4 +8,4 @@ sealed interface NavRoute
 data object HomeRoute : NavRoute
 
 @Serializable
-data class ProductRoute(val productId: String) : NavRoute
+data class MovieRoute(val movieId: String) : NavRoute

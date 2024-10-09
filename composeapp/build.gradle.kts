@@ -64,6 +64,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
 
     implementation(libs.kotlinx.serialization.json)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

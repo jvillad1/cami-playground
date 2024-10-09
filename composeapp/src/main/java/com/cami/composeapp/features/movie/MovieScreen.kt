@@ -1,4 +1,4 @@
-package com.cami.composeapp.features.product
+package com.cami.composeapp.features.movie
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,22 +11,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.cami.composeapp.ui.theme.CamiplaygroundTheme
 
 @Composable
-fun ProductScreen(modifier: Modifier = Modifier, productId: String) {
+fun MovieScreen(modifier: Modifier = Modifier, movieId: String) {
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
-            text = "Product ID: $productId"
+            text = "Movie ID: $movieId"
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ProductPreview() {
+fun MoviePreview() {
     CamiplaygroundTheme {
-        ProductScreen(productId = "ABC")
+        MovieScreen(movieId = "ABC")
     }
 }

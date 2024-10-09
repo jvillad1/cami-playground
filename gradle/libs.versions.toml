@@ -12,11 +12,14 @@ junitVersion = "1.2.1"
 kotlin = "2.0.20"
 hiltAndroid = "2.52"
 hiltNavigationCompose = "1.2.0"
-lifecycleRuntimeKtx = "2.8.6"
 kotlinxSerializationJson = "1.7.3"
+lifecycleRuntimeKtx = "2.8.6"
 ksp = "2.0.20-1.0.25"
 material = "1.12.0"
 navigationCompose = "2.8.2"
+okhttp-bom = "4.12.0"
+retrofit = "2.11.0"
+retrofit2KotlinxSerializationConverter = "1.0.0"
 timber = "5.0.1"
 
 [libraries]
@@ -43,6 +46,11 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp-bom" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]

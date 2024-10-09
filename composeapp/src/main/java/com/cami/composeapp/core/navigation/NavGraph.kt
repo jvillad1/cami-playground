@@ -1,7 +1,9 @@
 package com.cami.composeapp.core.navigation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -9,13 +11,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.cami.composeapp.features.home.HomeScreen
-import com.cami.composeapp.features.product.ProductScreen
+import com.cami.composeapp.features.home.presentation.HomeScreen
+import com.cami.composeapp.features.movie.MovieScreen
 
 @Composable
 fun NavGraph() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        val modifier = Modifier.padding(innerPadding)
+        val modifier = Modifier
+            .padding(innerPadding)
+            .background(color = MaterialTheme.colorScheme.background)
         val navController = rememberNavController()
 
         NavHost(
@@ -25,18 +29,18 @@ fun NavGraph() {
             composable<HomeRoute> {
                 HomeScreen(
                     modifier = modifier,
-                    onProductClick = { id ->
-                        navController.navigate(route = ProductRoute(id))
+                    onMovieClicked = { id ->
+                        navController.navigate(route = MovieRoute(id))
                     }
                 )
             }
 
-            composable<ProductRoute> { backStackEntry ->
-                val product: ProductRoute = backStackEntry.toRoute()
+            composable<MovieRoute> { backStackEntry ->
+                val product: MovieRoute = backStackEntry.toRoute()
 
-                ProductScreen(
+                MovieScreen(
                     modifier = modifier,
-                    productId = product.productId
+                    movieId = product.movieId
                 )
             }
         }
