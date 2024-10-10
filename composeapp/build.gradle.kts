@@ -76,11 +76,19 @@ dependencies {
 
     implementation(libs.timber)
 
+    // Debug
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Unit Testing
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.navigation.testing)
+    testImplementation(libs.robolectric)
 
+    // UI Testing
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
