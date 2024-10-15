@@ -36,9 +36,10 @@ class HomeViewModelTest {
         )
 
         homeViewModel = HomeViewModel(getTopRatedMovies)
-        val uiState = homeViewModel.state
-
-        Assert.assertEquals(topRatedMovies, uiState.value.movies)
+        homeViewModel.state.test {
+            val uiState = awaitItem()
+            Assert.assertEquals(topRatedMovies, uiState.movies)
+        }
     }
 
     @Test
