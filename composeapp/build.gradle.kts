@@ -81,12 +81,13 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Unit Testing
-    testImplementation(libs.junit)
-    testImplementation(libs.mockk)
     testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.navigation.testing)
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
     testImplementation(libs.robolectric)
+    testImplementation(libs.turbine)
 
     // UI Testing
     androidTestImplementation(libs.androidx.junit)

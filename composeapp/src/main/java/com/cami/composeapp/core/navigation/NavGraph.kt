@@ -1,9 +1,7 @@
 package com.cami.composeapp.core.navigation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,7 +17,6 @@ fun NavGraph() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         val modifier = Modifier
             .padding(innerPadding)
-            .background(color = MaterialTheme.colorScheme.background)
         val navController = rememberNavController()
 
         NavHost(

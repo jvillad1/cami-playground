@@ -1,5 +1,6 @@
 package com.cami.composeapp.features.home.data
 
+import com.cami.composeapp.core.data.api.NetworkApi
 import com.cami.composeapp.core.extensions.recoverResult
 import com.cami.composeapp.core.extensions.resultOf
 import com.cami.composeapp.features.home.domain.Movie
@@ -10,7 +11,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class MoviesRemoteDataSource @Inject constructor(
-    private val moviesApi: MoviesApi
+    private val moviesApi: MoviesApi,
+    private val networkApi: NetworkApi
 ) {
 
     suspend fun getTopRatedMovies(): Result<List<Movie>> = resultOf {
@@ -28,6 +30,6 @@ class MoviesRemoteDataSource @Inject constructor(
         }
     }.recoverResult { throwable ->
         Timber.d(throwable.localizedMessage)
-        emptyList()
+        error(networkApi.parseError(throwable))
     }
 }

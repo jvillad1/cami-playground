@@ -1,5 +1,6 @@
 package com.cami.composeapp.features.home.presentation
 
+import app.cash.turbine.test
 import com.cami.composeapp.features.home.domain.GetTopRatedMovies
 import com.cami.composeapp.features.home.domain.Movie
 import com.cami.composeapp.utils.MainDispatcherRule
@@ -25,7 +26,6 @@ class HomeViewModelTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        homeViewModel = HomeViewModel(getTopRatedMovies)
     }
 
     @Test
@@ -35,8 +35,23 @@ class HomeViewModelTest {
             emptyList()
         )
 
+        homeViewModel = HomeViewModel(getTopRatedMovies)
         val uiState = homeViewModel.state
 
         Assert.assertEquals(topRatedMovies, uiState.value.movies)
+    }
+
+    @Test
+    fun `when getTopRatedMovies is failure`() = runTest {
+        val throwable = Throwable("⚠️ Something went wrong")
+        coEvery { getTopRatedMovies.invoke() } returns Result.failure(
+            Throwable("⚠️ Something went wrong")
+        )
+
+        homeViewModel = HomeViewModel(getTopRatedMovies)
+        homeViewModel.event.test {
+            val event = awaitItem() as HomeEvent.LoadMoviesError
+            Assert.assertEquals(throwable.localizedMessage, event.message)
+        }
     }
 }

@@ -5,7 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.cami.composeapp.core.navigation.NavGraph
-import com.cami.composeapp.ui.theme.CamiplaygroundTheme
+import com.cami.composeapp.ui.ComposeApp
+import com.cami.composeapp.ui.theme.ComposeAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,8 +15,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CamiplaygroundTheme {
-                NavGraph()
+            ComposeAppTheme {
+                ComposeApp()
             }
         }
     }

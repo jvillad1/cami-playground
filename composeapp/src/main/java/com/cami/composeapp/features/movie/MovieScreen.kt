@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.cami.composeapp.ui.theme.CamiplaygroundTheme
+import com.cami.composeapp.ui.theme.ComposeAppTheme
 
 @Composable
 fun MovieScreen(modifier: Modifier = Modifier, movieId: String) {
@@ -26,7 +26,7 @@ fun MovieScreen(modifier: Modifier = Modifier, movieId: String) {
 @Preview(showBackground = true)
 @Composable
 fun MoviePreview() {
-    CamiplaygroundTheme {
+    ComposeAppTheme {
         MovieScreen(movieId = "ABC")
     }
 }
