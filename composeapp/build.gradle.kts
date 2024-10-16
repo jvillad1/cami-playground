@@ -64,6 +64,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
 
     implementation(libs.kotlinx.serialization.json)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -71,11 +76,20 @@ dependencies {
 
     implementation(libs.timber)
 
+    // Debug
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Unit Testing
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.androidx.navigation.testing)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.turbine)
 
+    // UI Testing
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
