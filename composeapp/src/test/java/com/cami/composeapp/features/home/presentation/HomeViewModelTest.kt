@@ -1,12 +1,13 @@
 package com.cami.composeapp.features.home.presentation
 
 import app.cash.turbine.test
-import com.cami.composeapp.features.home.domain.GetTopRatedMovies
 import com.cami.composeapp.features.home.domain.Movie
+import com.cami.composeapp.features.home.domain.ObserveTopRatedMovies
 import com.cami.composeapp.utils.MainDispatcherRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
@@ -19,7 +20,7 @@ class HomeViewModelTest {
     val mainDispatcherRule = MainDispatcherRule()
 
     @MockK
-    private lateinit var getTopRatedMovies: GetTopRatedMovies
+    private lateinit var observeTopRatedMovies: ObserveTopRatedMovies
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -31,11 +32,11 @@ class HomeViewModelTest {
     @Test
     fun `when getTopRatedMovies is success`() = runTest {
         val topRatedMovies = listOf<Movie>()
-        coEvery { getTopRatedMovies.invoke() } returns Result.success(
-            emptyList()
-        )
+        coEvery { observeTopRatedMovies.invoke() } returns flow{
+            emit(topRatedMovies)
+        }
 
-        homeViewModel = HomeViewModel(getTopRatedMovies)
+        homeViewModel = HomeViewModel(observeTopRatedMovies)
         homeViewModel.state.test {
             val uiState = awaitItem()
             Assert.assertEquals(topRatedMovies, uiState.movies)
@@ -45,11 +46,11 @@ class HomeViewModelTest {
     @Test
     fun `when getTopRatedMovies is failure`() = runTest {
         val throwable = Throwable("⚠️ Something went wrong")
-        coEvery { getTopRatedMovies.invoke() } returns Result.failure(
-            Throwable("⚠️ Something went wrong")
-        )
+        coEvery { observeTopRatedMovies.invoke() } returns flow {
+            error("⚠️ Something went wrong")
+        }
 
-        homeViewModel = HomeViewModel(getTopRatedMovies)
+        homeViewModel = HomeViewModel(observeTopRatedMovies)
         homeViewModel.event.test {
             val event = awaitItem() as HomeEvent.LoadMoviesError
             Assert.assertEquals(throwable.localizedMessage, event.message)

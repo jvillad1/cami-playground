@@ -2,6 +2,7 @@ package com.cami.composeapp.features.home.data
 
 import com.cami.composeapp.features.home.domain.Movie
 import com.cami.composeapp.features.home.domain.MoviesRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
@@ -9,5 +10,8 @@ class MoviesRepositoryImpl @Inject constructor(
 ) : MoviesRepository {
 
     override suspend fun getTopRatedMovies(): List<Movie> =
-        moviesRemoteDataSource.getTopRatedMovies().getOrThrow()
+        moviesRemoteDataSource.getSuspendingTopRatedMovies().getOrThrow()
+
+    override fun observeTopRatedMovies(): Flow<List<Movie>> =
+        moviesRemoteDataSource.getTopRatedMovies()
 }
